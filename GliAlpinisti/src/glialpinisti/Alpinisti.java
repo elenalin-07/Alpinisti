@@ -15,17 +15,20 @@ public class Alpinisti {
     public int CalcolaTentativi(){
         int passi = 0;
         p = r.nextInt(20, 81);
-        while(passi >= 0 || passi == cima){
+        while(passi >= 0 && passi < cima){
             np = r.nextInt(0,101);
-            if(np < p){
+            if(np <= p){
                 passi++;
             }
             else{
-                if(passi != 0){
+                if(n_tentativi != 0){
                     passi--;
                 }
             }
             n_tentativi++;
+        }
+        if(passi < 0){
+            n_tentativi = -1;
         }
         return n_tentativi;
     }

@@ -18,9 +18,28 @@ public class GliAlpinisti {
         Alpinisti a2 = new Alpinisti();
         Alpinisti a3 = new Alpinisti();
         
-        int nt1 = a1.CalcolaTentativi();
-        int nt2 = a1.CalcolaTentativi();
-        int nt3 = a1.CalcolaTentativi();
+        int[] a = new int[3];
+        a[0] = a1.CalcolaTentativi();
+        a[1] = a2.CalcolaTentativi();
+        a[2] = a3.CalcolaTentativi();
+        
+        int amin = 999 , apos = 999;
+        boolean dead = true;
+        for(int i = 0; i < a.length; i++){
+            if(a[i] < amin && a[i] > 0){
+                amin = a[i];
+                apos = i;
+                dead = false;
+            }
+        }
+        apos++;
+        
+        if(dead == false){
+           System.out.println("l'alpista " + apos + " ha impiegato il minor numero di tentativi: " + amin);
+        }
+        else{
+            System.out.println("nessuno di tre alpinisti ha riuscito a scalare la montagna");
+        }
     }
     
 }
