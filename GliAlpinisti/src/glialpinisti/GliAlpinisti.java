@@ -14,7 +14,9 @@ public class GliAlpinisti {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Alpinisti a1 = new Alpinisti();
+        
+        
+        /**
         Alpinisti a2 = new Alpinisti();
         Alpinisti a3 = new Alpinisti();
         
@@ -39,6 +41,31 @@ public class GliAlpinisti {
         }
         else{
             System.out.println("nessuno di tre alpinisti ha riuscito a scalare la montagna");
+        }
+        **/
+        
+        Alpinisti a1 = new Alpinisti(8, 70);
+        int nt = a1.CalcolaTentativi();
+        int cima = a1.getCima();
+        int percentuale = a1.getPercentuale();
+        if(nt != -1){
+            System.out.println("ha fatto " + nt + " tentativi per scalare la montagna di " + cima + " passi");
+            System.out.println("la percentuale di successo: " + percentuale + "%");
+            a1.aumentaPercentuale();
+            percentuale = a1.getPercentuale();
+            a1.Reset(15, 0);
+            nt = a1.CalcolaTentativi();
+            cima = a1.getCima();
+            if(nt != -1){
+            System.out.println("ha fatto " + nt + " tentativi per scalare la montagna di " + cima + " passi");
+            System.out.println("la percentuale di successo: " + percentuale + "%");
+            }
+            else{
+                System.out.println("non e riuscito a scalare la montagna di " + cima + " passi");
+            }
+        }
+        else{
+            System.out.println("non e riuscito a scalare la montagna di " + cima + " passi");
         }
     }
     

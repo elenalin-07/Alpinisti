@@ -11,18 +11,54 @@ package glialpinisti;
 import java.util.Random;
 public class Alpinisti {
     Random r = new Random();
-    private int cima = 7, n_tentativi = 0, p, np;
+    private int cima, n_tentativi = 0, percentuale, n_casuale;
+    
+    public Alpinisti(int c, int perc){
+        this.cima = c;
+        this.percentuale = perc;
+    }
+    
+    public void aumentaPercentuale(){
+        percentuale += cima/2;
+    }
+    public void Reset(int c, int nt){
+        this.cima = c;
+        this.n_tentativi = nt;
+    }
+    
+    public int getCima(){
+        return cima;
+    }
+    
+    public int getPercentuale(){
+        return percentuale;
+    }
+    
     public int CalcolaTentativi(){
         int passi = 0;
-        p = r.nextInt(20, 81);
         while(passi >= 0 && passi < cima){
-            np = r.nextInt(0,101);
-            if(np <= p){
-                passi++;
+            n_casuale = r.nextInt(0,101);
+            if(n_casuale <= percentuale){
+                if(n_casuale >= percentuale/2 && percentuale >= 60){
+                    passi += 2;
+                }
+                else{
+                    passi++;
+                }
             }
             else{
-                if(n_tentativi != 0){
-                    passi--;
+                if(n_tentativi > 2){
+                    if(percentuale >= 60){
+                        if(n_casuale < percentuale/2){
+                            passi -= 3;
+                        }
+                        else{
+                            passi -= 2;
+                        }
+                    }
+                    else{
+                        passi--;
+                    }
                 }
             }
             n_tentativi++;
