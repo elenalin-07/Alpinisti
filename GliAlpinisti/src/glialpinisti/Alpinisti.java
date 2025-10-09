@@ -50,10 +50,10 @@ public class Alpinisti {
                 if(n_tentativi > 2){
                     if(percentuale >= 60){
                         if(n_casuale < percentuale/2){
-                            passi -= 3;
+                            passi -= percentuale/12;
                         }
                         else{
-                            passi -= 2;
+                            passi -= 3;
                         }
                     }
                     else{
